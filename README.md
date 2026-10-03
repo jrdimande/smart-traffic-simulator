@@ -38,20 +38,20 @@ The model predicts the duration only. The choice of which axis receives the gree
 | Component | Role |
 |---|---|
 | `main.py` / `simulator.py` | Simulation, rendering, vehicles, traffic lights, controllers, benchmark and results screen. [CONFIRMAR: split of responsibilities between the two files] |
-| `train_model.py` | Trains the model and saves it. [CONFIRMAR] |
-| `src/model/traffic_model.joblib` | Serialized trained model, loaded with `joblib`. [CONFIRMAR: path used by the code] |
-| `data/traffic_data.csv` | Training dataset. [CONFIRMAR] |
+| `train_model.py` | Trains the model and saves it.|
+| `src/model/traffic_model.joblib` | Serialized trained model, loaded with `joblib`. |
+| `data/traffic_data.csv` | Training dataset|
 
 ## Machine Learning Model
 
-- **Algorithm:** [CONFIRMAR: defined in `train_model.py`]
+- **Algorithm:** [`train_model.py`]
 - **Input features (three, in this order):**
   1. `vehicles`: number of vehicles currently in the axis being evaluated.
   2. `waiting`: accumulated waiting indicator of that axis (seconds without green, see below).
   3. `opposite`: number of vehicles in the opposite axis.
 - **Output:** a single numeric value interpreted as green duration in seconds. The simulator clamps it to the range 5 to 45 s and rounds it to an integer.
-- **Training process:** [CONFIRMAR]
-- **Dataset:** [CONFIRMAR: state explicitly whether it is synthetic]
+- **Training process:** 
+- **Dataset:** [state explicitly whether it is synthetic]
 - **Model storage:** the model is loaded with `joblib`. If the file is missing, or if prediction raises an exception, the simulator falls back to a constant prediction of 20 s.
 
 ## Traffic Simulator
@@ -109,7 +109,7 @@ Each benchmark is a single 60-second run with a random seed, so results vary bet
 - Python
 - Pygame (rendering and event handling)
 - joblib (model loading)
-- [CONFIRMAR: library used to train and run the model, and the full contents of `requirements.txt`]
+- [library used to train and run the model, and the full contents of `requirements.txt`]
 
 ## Project Structure
 
@@ -161,7 +161,7 @@ python train_model.py
 python main.py
 ```
 
-[CONFIRMAR: entry-point file and training command.]
+[ entry-point file and training command.]
 
 ## Simulator Controls
 
@@ -184,8 +184,7 @@ The graphical interface is currently in Portuguese.
 
 ## Dataset
 
-[CONFIRMAR: purpose, columns, number of rows and origin of `data/traffic_data.csv`. State explicitly if the data is synthetic.]
-
+[ purpose, columns, number of rows and origin of `data/traffic_data.csv`. State explicitly if the data is synthetic.]
 ## Limitations
 
 - Simulation of a single isolated intersection; no real-world deployment or physical sensors.
@@ -193,7 +192,7 @@ The graphical interface is currently in Portuguese.
 - The model predicts only green duration; phase selection relies on hand-defined rules and thresholds.
 - If the model file is not found, the controller silently falls back to a constant 20 s prediction.
 - The benchmark consists of a single randomly seeded 60-second scenario per run, so it does not provide statistical conclusions. Average wait considers only vehicles that completed the crossing.
-- [CONFIRMAR: limitations regarding the training data]
+- [limitations regarding the training data]
 
 ## Future Work
 

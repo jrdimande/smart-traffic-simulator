@@ -37,7 +37,7 @@ The model predicts the duration only. The choice of which axis receives the gree
 
 | Component | Role |
 |---|---|
-| `main.py` / `simulator.py` | Simulation, rendering, vehicles, traffic lights, controllers, benchmark and results screen. [CONFIRMAR: split of responsibilities between the two files] |
+| `main.py` / `simulator.py` | Simulation, rendering, vehicles, traffic lights, controllers, benchmark and results screen. [ split of responsibilities between the two files] |
 | `train_model.py` | Trains the model and saves it.|
 | `src/model/traffic_model.joblib` | Serialized trained model, loaded with `joblib`. |
 | `data/traffic_data.csv` | Training dataset|
